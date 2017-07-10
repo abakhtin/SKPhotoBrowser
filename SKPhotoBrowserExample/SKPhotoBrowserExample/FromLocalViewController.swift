@@ -20,6 +20,7 @@ class FromLocalViewController: UIViewController, UICollectionViewDataSource, UIC
         // Static setup
         SKPhotoBrowserOptions.displayAction = false
         SKPhotoBrowserOptions.displayStatusbar = true
+        SKPhotoBrowserOptions.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 
         setupTestData()
         setupCollectionView()
