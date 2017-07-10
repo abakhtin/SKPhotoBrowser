@@ -129,12 +129,12 @@ private extension SKAnimator {
             let width = SKMesurement.screenWidth
             let height = width / imageRatio
             let yOffset = (SKMesurement.screenHeight - height) / 2
-            return CGRect(x: 0, y: yOffset, width: width, height: height)
+            return UIEdgeInsetsInsetRect(CGRect(x: 0, y: yOffset, width: width, height: height), SKPhotoBrowserOptions.contentInset)
         } else {
             let height = SKMesurement.screenHeight
             let width = height * imageRatio
             let xOffset = (SKMesurement.screenWidth - width) / 2
-            return CGRect(x: xOffset, y: 0, width: width, height: height)
+            return UIEdgeInsetsInsetRect(CGRect(x: xOffset, y: 0, width: width, height: height), SKPhotoBrowserOptions.contentInset)
         }
     }
 }

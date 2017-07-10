@@ -114,7 +114,7 @@ open class SKZoomingScrollView: UIScrollView {
             return
         }
         
-        let boundsSize = bounds.size
+        let boundsSize = UIEdgeInsetsInsetRect(bounds, SKPhotoBrowserOptions.contentInset).size
         let imageSize = photoImageView.frame.size
         
         let xScale = boundsSize.width / imageSize.width

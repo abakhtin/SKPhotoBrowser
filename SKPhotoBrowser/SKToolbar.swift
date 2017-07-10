@@ -72,21 +72,29 @@ private extension SKToolbar {
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         var items = [UIBarButtonItem]()
-        items.append(flexSpace)
+        if SKToolbarOptions.textAlignment != .left {
+            items.append(flexSpace)
+        }
         if browser.numberOfPhotos > 1 && SKPhotoBrowserOptions.displayBackAndForwardButton {
             items.append(toolPreviousButton)
         }
         if SKPhotoBrowserOptions.displayCounterLabel {
-            items.append(flexSpace)
+            if SKToolbarOptions.textAlignment != .left {
+                items.append(flexSpace)
+            }
             items.append(toolCounterButton)
-            items.append(flexSpace)
+            if SKToolbarOptions.textAlignment != .right {
+                items.append(flexSpace)
+            }
         } else {
             items.append(flexSpace)
         }
         if browser.numberOfPhotos > 1 && SKPhotoBrowserOptions.displayBackAndForwardButton {
             items.append(toolNextButton)
         }
-        items.append(flexSpace)
+        if SKToolbarOptions.textAlignment != .right {
+            items.append(flexSpace)
+        }
         if SKPhotoBrowserOptions.displayAction {
             items.append(toolActionButton)
         }
@@ -107,7 +115,7 @@ private extension SKToolbar {
     
     func setupCounterLabel() {
         toolCounterLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 95, height: 40))
-        toolCounterLabel.textAlignment = .center
+        toolCounterLabel.textAlignment = SKToolbarOptions.textAlignment
         toolCounterLabel.backgroundColor = .clear
         toolCounterLabel.shadowColor = .black
         toolCounterLabel.shadowOffset = CGSize(width: 0.0, height: 1.0)
